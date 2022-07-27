@@ -119,8 +119,7 @@ class TgUploader:
                                                                          progress=self.__upload_progress)
                             if not self.isPrivate and BOT_PM:
                                 try:
-                                    app.send_video(chat_id=self.__user_id, video=self.__sent_msg.video.file_id,
-                                            caption=cap_mono)
+                                    app.copy_message(chat_id=self.__user_id, from_chat_id=self.__sent_msg.chat.id, message_id=self.__sent_msg.id)
                                 except Exception as err:
                                         LOGGER.error(f"Failed To Send Video in PM:\n{err}")
                     elif len(LEECH_LOG) == 0:
@@ -225,8 +224,7 @@ class TgUploader:
                                                                  progress=self.__upload_progress)
                         if not self.isPrivate and BOT_PM:
                             try:
-                                app.send_document(chat_id=self.__user_id, document=self.__sent_msg.document.file_id,
-                                                caption=cap_mono)
+                                app.copy_message(chat_id=self.__user_id, from_chat_id=self.__sent_msg.chat.id, message_id=self.__sent_msg.id)
                             except Exception as err:
                                 LOGGER.error(f"Failed To Send Document in PM:\n{err}")
                 elif len(LEECH_LOG) == 0:
